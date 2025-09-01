@@ -1,17 +1,23 @@
-# DSA Array Problems in C++
+# 🚀 DSA Array Problems in C++
 
-This folder contains C++ solutions for common array-related problems in Data Structures and Algorithms (DSA).
+Welcome! This folder contains C++ solutions for popular array problems frequently asked in coding interviews and competitive programming.
 
-## Problems Covered
+---
 
-- Merge Sorted Array ([Merge_Sorted_Array.cpp](Merge_Sorted_Array.cpp))
-- Move Zeros ([MoveZeros.cpp](MoveZeros.cpp))
-- Two Sum ([TwoSum.cpp](TwoSum.cpp))
-- ...and more
+## 📚 Problems Included
 
-## How to Run
+- ✅ Merge Sorted Array ([Merge_Sorted_Array.cpp](Merge_Sorted_Array.cpp))
+- ✅ Move Zeros ([MoveZeroes.cpp](MoveZeros.cpp))
+- ✅ Two Sum ([TwoSum.cpp](TwoSum.cpp))
+- ✅ Majority Element([Majority_Element.cpp](Majority_Element.cpp))
+- ...and many more!
 
-Compile and run any `.cpp` file using a C++ compiler:
+---
+
+## 🛠️ How to Compile & Run
+
+You can compile and run any problem file using a C++ compiler.  
+Replace `ProblemName.cpp` with the file you want to run:
 
 ```sh
 g++ ProblemName.cpp -o ProblemName
