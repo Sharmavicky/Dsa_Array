@@ -5,25 +5,39 @@
 using namespace std;
 
 /*
-    TC_nlogn: {
-        Time Complexity: O(nlogn) for sorting the array using quick sort algorithm
-        Space Complexity: O(n) for sorting the array in place
-    }
+    * Problem: Check if an array contains any duplicates.
 
-    TC_n: {
-        Time Complexity: O(n) for iterating through the array and checking for duplicates using a hash set
-        Space Complexity: O(n) for storing the elements in the hash set
-    }
+    * Approaches Implemented:
+    1. Brute Force Approach
+       - Compare each element with every other element.
+       - Time Complexity: O(n^2)
+       - Space Complexity: O(1)
 
-    TC_n2: {
-        Time Complexity: O(n^2) for iterating through the array and checking for duplicates using a nested loop
-        Space Complexity: O(1) as no extra space is used
-    }
+    2. Better Approach (Sorting + Adjacent Comparison)
+       - Sort the array, then check if any adjacent elements are equal.
+       - Time Complexity: O(n log n)
+       - Space Complexity: O(1) (assuming in-place sort)
+
+    3. Optimal Approach (Hash Set)
+       - Use a hash set to track seen elements.
+       - If an element is already in the set, a duplicate exists.
+       - Time Complexity: O(n) on average
+       - Space Complexity: O(n)
 */
 
 class Solution {
     public:
-    bool TC_nlogn(vector<int>& nums) {
+    bool BruteForce(vector<int>& nums) {
+        for (int i=0; i<nums.size(); i++) {
+            for (int j=0; j<nums.size(); j++) {
+                if (i != j && nums[i] == nums[j]) return true; // duplicate found
+            }
+        };
+
+        return false; // no duplicates found
+    }
+
+    bool BetterApproach(vector<int>& nums) {
         // sorting the array using quick sort algorithm
         sort(nums.begin(), nums.end());
 
@@ -35,7 +49,7 @@ class Solution {
         return false; // no duplicates found
     };
 
-    bool TC_n(vector<int>& nums) {
+    bool OptimalApproach(vector<int>& nums) {
         unordered_set<int> s;
 
         for (int i=0; i<nums.size(); i++) {
@@ -45,22 +59,12 @@ class Solution {
         return false; // no duplicates found
 
     };
-
-    bool TC_n2(vector<int>& nums) {
-        for (int i=0; i<nums.size(); i++) {
-            for (int j=0; j<nums.size(); j++) {
-                if (i != j && nums[i] == nums[j]) return true; // duplicate found
-            }
-        };
-
-        return false; // no duplicates found
-    }
 };
 
 // Main Function
 int main() {
     vector<int> nums = {1, 2, 3, 1};
-    bool result = Solution().TC_n(nums);
+    bool result = Solution().OptimalApproach(nums);
     cout << result;
 
     return 0;
