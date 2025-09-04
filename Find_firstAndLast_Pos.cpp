@@ -2,6 +2,35 @@
 #include <vector>
 using namespace std;
 
+/*
+    Problem: Find First and Last Position of Element in Sorted Array
+    (LeetCode 34)
+
+    Approaches Implemented:
+
+    1️⃣ BruteForce (O(n))
+        - Scan from left to find the first occurrence.
+        - Scan from right to find the last occurrence.
+
+    2️⃣ BetterApproach (O(n) worst-case, O(log n + k) average)
+        - Use Binary Search to find one occurrence of the target.
+        - Expand left and right to find the complete range.
+
+    3️⃣ OptimalApproach (O(log n))
+        - Two Binary Searches:
+            * One to find the first occurrence.
+            * Another to find the last occurrence.
+        - This avoids unnecessary scanning.
+
+    Returns:
+        - A vector {first_index, last_index}
+        - {-1, -1} if the target is not found.
+
+    Complexity:
+        - Time: O(log n) for the optimal solution
+        - Space: O(1)
+*/
+
 class Solution {
     public:
     vector<int> BruteForce(vector<int>& nums, int target) {
