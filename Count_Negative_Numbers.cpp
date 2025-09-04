@@ -3,23 +3,28 @@
 using namespace std;
 
 /*
-    * Problem: Count the number of negative numbers in a 2D grid where each row is sorted in non-increasing order.
+    Problem: Count Negative Numbers in a Sorted Matrix
+    (LeetCode 1351)
 
-    * Approaches:
-    1. BruteForce:
-       - Check every element in the grid and count negatives.
-       - Time Complexity: O(m * n), Space Complexity: O(1).
+    Approach 1: BruteForce (O(m * n))
+        - Traverse every element of the matrix.
+        - Count how many elements are < 0.
 
-    2. countNegatives (Optimized):
-       - Use Binary Search on each row to find the first negative number. 
-         Since rows are sorted, all elements to the right are also negative.
-       - Time Complexity: O(m * log n), Space Complexity: O(1).
+    Approach 2: Optimized using Binary Search (O(m * log n))
+        - Each row is sorted in non-increasing order.
+        - For every row, apply binary search to find the first negative number.
+        - Count all elements to the right of that index as negative.
 
-    * Parameters:
-        - grid: 2D vector of integers (sorted rows in non-increasing order)
-    
-    * Returns:
-        - Total count of negative numbers in the grid.
+    Functions:
+        - BruteForce(vector<vector<int>>& grid):
+            Returns count of negatives by checking each element (O(m*n)).
+
+        - countNegatives(vector<vector<int>>& grid):
+            Returns count of negatives using binary search on each row (O(m log n)).
+
+    Complexity:
+        Time: O(m * log n) for optimized approach
+        Space: O(1)
 */
 
 
