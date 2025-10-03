@@ -19,7 +19,7 @@ using namespace std;
 
 class Solution {
     public:
-    bool LinearSearch(vector<vector<int>>& matrix, int target) {
+    bool LinearSearchApproach(vector<vector<int>>& matrix, int target) {
         int rows = matrix.size(), cols = matrix[0].size();
 
         for (int i = 0; i < rows; i++) {
@@ -31,14 +31,17 @@ class Solution {
         return false;
     }
 
-    bool search2DMatrix(vector<vector<int>>& matrix, int target) {
+    bool StaircaseApproach(vector<vector<int>>& matrix, int target) {
         int rows = 0, cols = matrix[0].size() - 1;
 
         while (cols >= 0  && rows < matrix.size()) {
+            // if current cell is our target than return true
             if (matrix[rows][cols] == target) return true;
             
+            // if current cell is less than target, than target lies in the next row
             else if (matrix[rows][cols] < target) rows++;
 
+            // if current cell is greater than target, than target lies in previous col
             else cols--;
         }
 
@@ -58,7 +61,7 @@ int main() {
         {18, 21, 23, 26, 30}
     };
 
-    bool res = sol.search2DMatrix(mat, 26);
+    bool res = sol.StaircaseApproach(mat, 26);
     cout << res;
 
     return 0;
