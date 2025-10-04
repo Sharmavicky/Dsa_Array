@@ -27,7 +27,7 @@ using namespace std;
 
 class Solution {
     public:
-    vector<vector<int>> sprialMatrix(int n) {
+    vector<vector<int>> generateMatrix(int n) {
         // initiate an empty 2D matrix with all values 0
         vector<vector<int>> res(n, vector<int>(n, 0));
 
@@ -64,7 +64,7 @@ int main() {
     int n = 3;
 
     Solution sol;
-    vector<vector<int>> res = sol.sprialMatrix(n);
+    vector<vector<int>> res = sol.generateMatrix(n);
 
     for (int i=0; i<n; i++) {
         for (int j=0; j<n; j++) {
