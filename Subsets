@@ -1,0 +1,79 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+/*
+    * @class Solution
+    * @brief Implements two methods to generate all subsets (the power set) of a given integer array.
+    *
+    * The class provides:
+    *  1. iterativeApproach() — uses iterative doubling to generate subsets.
+    *  2. recursiveApproach() — uses recursion and backtracking to explore all subset combinations.
+    *
+    * Both approaches return all possible subsets, including the empty set and the full array.
+    *
+    * Example:
+    * Input:  nums = [1, 2, 3]
+    * Output: [[], [1], [2], [3], [1,2], [1,3], [2,3], [1,2,3]]
+*/
+
+class Solution {
+private:
+    void getAllSubsets(vector<int>& nums, vector<int>& subset_array, vector<vector<int>>& res, int idx) {
+        // Base case
+        if (idx == nums.size()) {
+            res.push_back(subset_array);
+            return;
+        }
+
+        // inclution
+        subset_array.push_back(nums[idx]);
+        getAllSubsets(nums, subset_array, res, idx + 1);
+
+        // exclusion
+        subset_array.pop_back();
+        getAllSubsets(nums, subset_array, res, idx + 1);
+    }
+
+public:
+    vector<vector<int>> iterativeApproach(vector<int>& nums) {
+        vector<vector<int>> res = {{}}; // initialize with empty array
+        int n = nums.size();
+
+        for (int num : nums) {
+            int size = res.size();
+            for (int i = 0; i < size; i++) {
+                vector<int> newSubset = res[i];
+                newSubset.push_back(num);
+                res.push_back(newSubset);
+            }
+        }
+
+        return res;
+    }
+
+    vector<vector<int>> recursiveApproach(vector<int>& nums) {
+        vector<vector<int>> res; // stores all subsets
+        vector<int> subset_array; // subset_array
+        getAllSubsets(nums, subset_array, res, 0); // calling recursive function
+        return res; // return res
+    }   
+};
+
+// main function
+int main() {
+    Solution sol;
+
+    vector<int> nums = {1, 2, 3};
+
+    vector<vector<int>> res = sol.iterativeApproach(nums);
+
+    for (int i=0; i<res.size(); i++) {
+        for (int j=0; j<res[i].size(); j++) {
+            cout << j << " ";
+        }
+        cout << "\n";
+    }
+
+    return 0;
+}
