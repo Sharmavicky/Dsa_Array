@@ -1,6 +1,25 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+/*
+    * @class Solution
+    * @brief Provides two approaches to find the Previous Smaller Element (PSE) for each index in an array.
+    *
+    * The class implements:
+    *
+    * 1. **BruteForce()** – O(n²)
+    *    - For every element, it scans leftwards to find the first smaller element.
+    *    - If none exists, returns -1 for that position.
+    *
+    * 2. **Optimal()** – O(n) using a stack
+    *    - Maintains a stack that stores potential candidates for the previous smaller element.
+    *    - Pops elements until a smaller value is found on top.
+    *    - If no such element exists, returns -1.
+    *
+    * These methods are commonly used in problems related to monotonic stacks,
+    * histogram area calculations, stock span variations, and array preprocessing.
+*/
+
 class Solution {
     public:
     vector<int> BruteForce(vector<int>& arr) {
