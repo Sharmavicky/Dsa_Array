@@ -22,7 +22,7 @@ using namespace std;
 
 class Solution {
     public:
-    vector<vector<int>> matrixReshape(vector<vector<int>>& mat, int r, int c) {
+    vector<vector<int>> BruteForce(vector<vector<int>>& mat, int r, int c) {
         int m = mat.size();
         int n = mat[0].size();
 
@@ -48,6 +48,22 @@ class Solution {
 
         return res;
     }
+
+    vector<vector<int>> Optimal(vector<vector<int>> &mat, int r, int c) {
+        int m = mat.size(), n = mat[0].size();
+
+        // reshape not possible
+        if (m * n != r * c)
+            return mat;
+
+        vector<vector<int>> res(r, vector<int>(c));
+
+        for (int i = 0; i < m * n; i++) {
+            res[i / c][i % c] = mat[i / n][i % n];
+        }
+
+        return res;
+    }
 };
 
 // main function
@@ -59,7 +75,7 @@ int main() {
 
     int r = 1, c = 4;
 
-    vector<vector<int>> res = Solution().matrixReshape(mat, r, c);
+    vector<vector<int>> res = Solution().Optimal(mat, r, c);
 
     for (int i = 0; i < res.size(); i++) {
         for (int j = 0; j < res[i].size(); j++) {
