@@ -3,21 +3,29 @@ using namespace std;
 
 /*
     * @class Solution
-    * @brief Implements matrix reshaping functionality similar to MATLAB's reshape operation.
+    * @brief Provides two methods to reshape a given 2D matrix into dimensions r × c.
     *
-    * The class provides:
+    * The class implements:
     *
-    * 1. **matrixReshape() – O(m × n)**
-    *      - Takes a 2D matrix `mat` and reshapes it into a matrix of dimensions `r × c`.
-    *      - First checks if reshaping is possible by comparing total element counts
-    *        (`m × n` must equal `r × c`).
-    *      - If valid, iterates through the original matrix and places elements
-    *        sequentially into the new matrix using row/column tracking.
-    *      - If reshaping is not possible, returns the original matrix unchanged.
+    * 1. **BruteForce() – O(m × n)**
+    *      - First checks if the reshape operation is valid by ensuring the total number
+    *        of elements remains the same (`m × n == r × c`).
+    *      - Iterates over the original matrix in row-major order and manually tracks
+    *        row and column indices (`row`, `col`) while filling the new matrix.
+    *      - Resets the column index and increments the row index once a row is filled.
+    *      - Returns the reshaped matrix or the original matrix if reshape is impossible.
     *
-    * This method ensures all elements retain their original traversal order
-    * (row-major order) and provides an efficient solution with O(m × n) time
-    * and O(r × c) additional space.
+    * 2. **Optimal() – O(m × n)**
+    *      - Uses a single loop from `0` to `m × n - 1` and computes positions in both
+    *        matrices using mathematical mapping:
+    *            - New matrix position: `(i / c, i % c)`
+    *            - Old matrix position: `(i / n, i % n)`
+    *      - Eliminates explicit nested loops and manual row/column management.
+    *      - Produces a cleaner and more optimized reshape operation.
+    *
+    * Both approaches maintain **row-major traversal order**, ensuring that the relative
+    * ordering of elements remains unchanged. The methods demonstrate the transition from
+    * a manual index-tracking solution to a mathematically optimized mapping technique.
 */
 
 class Solution {
