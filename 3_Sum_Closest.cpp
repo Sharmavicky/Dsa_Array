@@ -28,7 +28,27 @@ using namespace std;
 
 class Solution {
     public:
-    int threeSumClosest(vector<int>& nums, int target) {
+    int BruteForce(vector<int>& nums, int target) {
+        int n = nums.size();
+        int closestSum = nums[0] + nums[1] + nums[2]; // Initialize with the first three elements
+
+        for (int i = 0; i < n - 2; i++) {
+            for (int j = i + 1; j < n - 1; j++) {
+                for (int k = j + 1; k < n; k++) {
+                    int currSum = nums[i] + nums[j] + nums[k];
+                    if (abs(currSum - target) < abs(closestSum - target)) {
+                        closestSum = currSum;
+                    } else if (closestSum == target) {
+                        return closestSum;
+                    }
+                }
+            }
+        }
+
+        return closestSum;
+    }
+
+    int OptimalApproach(vector<int>& nums, int target) {
         int n = nums.size();
 
         // Sort the array to use two-pointer technique
@@ -60,7 +80,7 @@ int main() {
     vector<int> nums = {-1, 2, 1, -4};
     int target = 1;
 
-    int result = sol.threeSumClosest(nums, target);
+    int result = sol.BruteForce(nums, target);
     cout << "The sum that is closest to the target " << target << " is: " << result << endl;
 
     return 0;
